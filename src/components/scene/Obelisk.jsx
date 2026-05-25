@@ -9,6 +9,7 @@ export default function Obelisk({ member }) {
   const lightRef = useRef();
   const [hovered, setHovered] = useState(false);
   const { navigateTo, setActiveMemberId, setActiveScene, cameraTarget } = useScene();
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
   useFrame((_, delta) => {
     if (!meshRef.current) return;
@@ -29,7 +30,7 @@ export default function Obelisk({ member }) {
   };
 
   return (
-    <Float speed={1.4} rotationIntensity={0.18} floatIntensity={0.55}>
+    <Float speed={isMobile ? 0.9 : 1.4} rotationIntensity={isMobile ? 0.08 : 0.18} floatIntensity={isMobile ? 0.28 : 0.55}>
       <group position={member.position}>
         <pointLight ref={lightRef} color={member.colorA} intensity={1.5} distance={6} decay={2} />
 

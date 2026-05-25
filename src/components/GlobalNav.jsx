@@ -22,9 +22,9 @@ export default function GlobalNav() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-3 pointer-events-none"
       style={{
-        padding: '14px 24px',
+        padding: '14px clamp(16px, 3vw, 24px)',
         borderBottom: '1px solid rgba(148,163,184,0.1)',
         backdropFilter: 'blur(2px)',
       }}
@@ -44,12 +44,12 @@ export default function GlobalNav() {
       </Link>
 
       {/* HUD center */}
-      <div style={{ fontSize: 9, color: '#4B5563', letterSpacing: '0.22em', fontFamily: 'monospace', textTransform: 'uppercase' }}>
+      <div className="hidden md:block" style={{ fontSize: 9, color: '#4B5563', letterSpacing: '0.22em', fontFamily: 'monospace', textTransform: 'uppercase' }}>
         WANDENREICHT · {isHome ? 'ROSTER CHAMBER' : 'DEEP DIVE'}
       </div>
 
       {/* Coordinates */}
-      <div style={{ fontSize: 9, color: '#374151', letterSpacing: '0.15em', fontFamily: 'monospace' }}>
+      <div className="hidden lg:block" style={{ fontSize: 9, color: '#374151', letterSpacing: '0.15em', fontFamily: 'monospace' }}>
         {coords}
       </div>
     </div>

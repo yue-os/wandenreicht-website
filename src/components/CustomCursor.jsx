@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 export default function CustomCursor() {
   const dotRef  = useRef();
@@ -6,8 +7,11 @@ export default function CustomCursor() {
   const posRef  = useRef({ x: -100, y: -100 });
   const lagRef  = useRef({ x: -100, y: -100 });
   const [hovering, setHovering] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
+
     const onMove = (e) => {
       posRef.current = { x: e.clientX, y: e.clientY };
     };
@@ -25,9 +29,11 @@ export default function CustomCursor() {
       document.removeEventListener('mouseover', onOver);
       document.removeEventListener('mouseout', onOut);
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     let raf;
     const loop = () => {
       const p = posRef.current;
@@ -47,7 +53,11 @@ export default function CustomCursor() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   const ringSize = 38;
 

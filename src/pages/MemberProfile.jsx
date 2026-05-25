@@ -49,7 +49,7 @@ export default function MemberProfile() {
   };
 
   if (!member) return (
-    <div className="fixed inset-0 flex items-center justify-center" style={{ zIndex: 10 }}>
+    <div className="fixed inset-0 flex items-center justify-center px-6 text-center" style={{ zIndex: 10 }}>
       <span style={{ color: '#94A3B8', fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.2em' }}>
         MEMBER NOT FOUND
       </span>
@@ -63,15 +63,15 @@ export default function MemberProfile() {
         onClick={handleBack}
         className="pointer-events-auto absolute"
         style={{
-          top: 60, left: 24,
+          top: 'clamp(16px, 5vw, 60px)', left: 'clamp(16px, 3vw, 24px)',
           background: 'none',
           border: '1px solid rgba(148,163,184,0.25)',
           color: '#6B7280',
-          fontSize: 9,
+          fontSize: 'clamp(8px, 1.2vw, 9px)',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
           fontFamily: 'monospace',
-          padding: '8px 18px',
+          padding: '10px 18px',
           transition: 'border-color 0.3s, color 0.3s',
         }}
         onMouseEnter={e => { e.currentTarget.style.borderColor = member.colorA; e.currentTarget.style.color = member.colorA; }}
@@ -83,8 +83,8 @@ export default function MemberProfile() {
       {/* Main content */}
       <div
         ref={contentRef}
-        className="absolute inset-0 flex items-center"
-        style={{ padding: '0 7vw', opacity: 0 }}
+        className="absolute inset-0 flex flex-col md:flex-row items-start md:items-center overflow-y-auto md:overflow-hidden"
+        style={{ padding: 'clamp(72px, 12vh, 120px) clamp(20px, 7vw, 7vw) clamp(32px, 6vh, 64px)', opacity: 0 }}
       >
         {/* Left watermark */}
         <div className="flex-1 hidden md:flex items-center justify-center" style={{ overflow: 'hidden', paddingRight: '4vw' }}>
@@ -104,9 +104,9 @@ export default function MemberProfile() {
         </div>
 
         {/* Right HUD */}
-        <div className="flex-1 flex flex-col" style={{ gap: 20, maxWidth: 500 }}>
+        <div className="w-full flex-1 flex flex-col" style={{ gap: 20, maxWidth: 500 }}>
           {/* Role */}
-          <div style={{ fontSize: 9, color: member.colorA, letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'monospace' }}>
+          <div style={{ fontSize: 'clamp(8px, 1.2vw, 9px)', color: member.colorA, letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'monospace' }}>
             // {member.role}
           </div>
 
@@ -126,7 +126,7 @@ export default function MemberProfile() {
           <div style={{ height: 1, background: `linear-gradient(to right, ${member.colorA}, transparent)` }} />
 
           {/* Bio */}
-          <p style={{ color: '#9CA3AF', fontSize: 15, lineHeight: 1.75, fontFamily: 'Inter, system-ui, sans-serif', margin: 0 }}>
+          <p style={{ color: '#9CA3AF', fontSize: 'clamp(14px, 1.9vw, 15px)', lineHeight: 1.75, fontFamily: 'Inter, system-ui, sans-serif', margin: 0 }}>
             {member.bio}
           </p>
 
@@ -153,7 +153,7 @@ export default function MemberProfile() {
 
           {/* Tech stack */}
           <div>
-            <div style={{ fontSize: 9, color: '#4B5563', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'monospace', marginBottom: 10 }}>
+            <div style={{ fontSize: 'clamp(8px, 1.2vw, 9px)', color: '#4B5563', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'monospace', marginBottom: 10 }}>
               Tech Stack
             </div>
             <div className="flex flex-wrap" style={{ gap: 8 }}>

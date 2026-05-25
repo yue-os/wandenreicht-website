@@ -18,18 +18,19 @@ export default function Home() {
 
       {/* Fixed hero overlay */}
       <div
-        className="fixed inset-0 flex flex-col items-center justify-center pointer-events-none"
+        className="fixed inset-0 flex flex-col items-center justify-center px-4 sm:px-6 pointer-events-none"
         style={{ zIndex: 10 }}
       >
         <HeroText />
 
         <div style={{
-          marginTop: '1.8rem',
-          fontSize: 10,
+          marginTop: 'clamp(0.9rem, 2vw, 1.8rem)',
+          fontSize: 'clamp(9px, 1.5vw, 10px)',
           color: '#4B5563',
-          letterSpacing: '0.28em',
+          letterSpacing: '0.24em',
           textTransform: 'uppercase',
           fontFamily: 'monospace',
+          textAlign: 'center',
         }}>
           Systems Architecture · Full-Stack Development
         </div>
@@ -37,7 +38,7 @@ export default function Home() {
         {/* Scroll cue */}
         <div style={{
           position: 'absolute',
-          bottom: '2.5rem',
+          bottom: 'clamp(1.25rem, 4vw, 2.5rem)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -52,8 +53,8 @@ export default function Home() {
 
       {/* Bottom member hint */}
       <div
-        className="fixed flex items-end justify-center gap-24 pointer-events-none"
-        style={{ bottom: '4rem', left: 0, right: 0, zIndex: 10 }}
+        className="fixed inset-x-0 flex flex-wrap items-end justify-center gap-x-6 gap-y-4 px-4 pointer-events-none"
+        style={{ bottom: 'clamp(1rem, 5vw, 4rem)', zIndex: 10 }}
       >
         {[
         { name: 'John Mark', color: '#2E5BFF' },
@@ -62,9 +63,9 @@ export default function Home() {
         { name: 'Member 4',  color: '#A855F7' },
         { name: 'Member 5',  color: '#F59E0B' },
       ].map((m) => (
-          <div key={m.name} className="flex flex-col items-center gap-2">
+          <div key={m.name} className="flex flex-col items-center gap-2 w-[clamp(88px,18vw,130px)] text-center">
             <div style={{ width: 1, height: 28, background: `linear-gradient(to bottom, transparent, ${m.color}80)` }} />
-            <span style={{ fontSize: 9, color: m.color, letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'monospace', opacity: 0.6 }}>
+            <span style={{ fontSize: 'clamp(8px, 1.2vw, 9px)', color: m.color, letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'monospace', opacity: 0.6 }}>
               {m.name}
             </span>
           </div>

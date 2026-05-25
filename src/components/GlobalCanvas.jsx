@@ -5,6 +5,7 @@ import CameraRig from './scene/CameraRig';
 import TeamScene from './scene/TeamScene';
 import MemberScene from './scene/MemberScene';
 import { useScene } from '../lib/SceneContext';
+import { useIsMobile } from '../hooks/use-mobile';
 
 function MouseTracker() {
   const { mousePos } = useScene();
@@ -34,6 +35,8 @@ function Scene() {
 }
 
 export default function GlobalCanvas() {
+  const isMobile = useIsMobile();
+
   return (
     <Canvas
       style={{
@@ -44,9 +47,9 @@ export default function GlobalCanvas() {
         height: '100vh',
         zIndex: 0,
       }}
-      camera={{ position: [0, 0, 7], fov: 65, near: 0.1, far: 100 }}
+      camera={{ position: [0, 0, 7], fov: isMobile ? 72 : 65, near: 0.1, far: 100 }}
       gl={{ antialias: true, alpha: false }}
-      dpr={[1, 1.5]}
+      dpr={isMobile ? [1, 1.25] : [1, 1.5]}
     >
       <MouseTracker />
       <Scene />

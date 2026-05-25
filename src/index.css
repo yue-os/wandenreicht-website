@@ -92,4 +92,15 @@
   * {
     cursor: none !important;
   }
+
+  @media (hover: none), (pointer: coarse), (max-width: 767px) {
+    body,
+    * {
+      cursor: auto !important;
+    }
+
+    body {
+      touch-action: manipulation;
+    }
+  }
 }
