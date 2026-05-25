@@ -6,12 +6,12 @@ on:
     types: [submitted]
 
 permissions:
+  contents: write
   pull-requests: write
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    # Prevent failure if a review happens on a closed/merged PR
     if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.state == 'open') || (github.event_name == 'pull_request_review' && github.event.review.pull_request.state == 'open') }}
     steps:
       - name: Enable auto-merge for PR
